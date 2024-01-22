@@ -174,3 +174,55 @@ const isOnAmount = cars => {
   return cars.filter(car => car.amount > 0);
 };
 // console.log(isOnAmount(cars));
+
+//======================
+//задача на події
+/*
+Завдання 7
+При натисканні на коло він повинен слідувати за курсором.
+При повторному натисканні він стає в початкове положення.
+https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/MouseEvent
+https://developer.mozilla.org/ru/docs/Web/API/MouseEvent/pageX
+https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY
+*/
+
+const circle = document.querySelector('.outerCircle');
+
+circle.addEventListener('click', () => {
+  document.addEventListener('mousemove', changeCircle);
+});
+function changeCircle(e) {
+  circle.style.transform = `translate(${e.pageX}px, ${e.pageY}px)`;
+}
+// circle.addEventListener('click', removeListrnr);
+// function removeListrnr() {
+//   document.removeEventListener('mousemove', changeCircle);
+// }
+
+// let isCircleMoved = false;
+
+// document.addEventListener('mousedown', handleMouseDown);
+
+// function handleMouseDown() {
+//   if (isCircleMoved) {
+//     // Повернення в початкове положення
+//     circle.style.transform = 'translate(-50%, -50%)';
+//   } else {
+//     // Переміщення за курсором
+//     document.addEventListener('mousemove', handleMouseMove);
+//   }
+
+//   // Зміна стану
+//   isCircleMoved = !isCircleMoved;
+
+//   // Видалення подій після відпускання кнопки миші
+//   document.addEventListener('mouseup', () => {
+//     document.removeEventListener('mousemove', handleMouseMove);
+//   });
+// }
+
+// function handleMouseMove(e) {
+//   // Зміщення кола за курсором
+//   circle.style.transform = `translate(${e.pageX}px, ${e.pageY}px)`;
+//   console.log(e.pageX);
+// }
